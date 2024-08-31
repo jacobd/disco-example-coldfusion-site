@@ -48,10 +48,9 @@ RUN /opt/coldfusion/cfusion/bin/coldfusion restart
 # Got a weird error that the neo-runtime.bak couldn't be written, this fixes that.
 RUN chmod 777 /opt/coldfusion/cfusion/lib/neo-runtime.bak
 
-ENV PORT 8500
-
 # Expose the default ColdFusion port
 EXPOSE 8500
 
-# Start the ColdFusion server
-CMD ["/opt/coldfusion/cfusion/bin/coldfusion", "start"]
+# Copy code
+COPY code/index.cfm /app/index.cfm
+ENV PORT 8500
